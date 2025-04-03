@@ -34,8 +34,6 @@
 
 
 // Change the below values if desired
-#define BUTTON_PIN 2
-#define MESSAGE "azerty"
 #define DEVICE_NAME "ESP32 Keyboard"
 
 
@@ -43,6 +41,7 @@
 void bluetoothTask(void*);
 void typeText(const char* text);
 
+String MESSAGE;
 
 bool isBleConnected = false;
 
@@ -50,23 +49,28 @@ bool isBleConnected = false;
 void setup() {
     Serial.begin(115200);
 
-    // configure pin for button
-    pinMode(BUTTON_PIN, INPUT_PULLUP);
-
     // start Bluetooth task
     xTaskCreate(bluetoothTask, "bluetooth", 20000, NULL, 5, NULL);
 }
 
 
 void loop() {  
-    if (isBleConnected && digitalRead(BUTTON_PIN) == LOW) {
-        // Wait the pull up
-        while (digitalRead(BUTTON_PIN) == LOW);
+    if (isBleConnected) {
 
-        // Send MESSAGE when the button is pull up
-        String messageConverted = azertyToQwerty(MESSAGE);
+        while (Serial.available()) {
+          delay(3);
+          if (Serial.available() >0) {
+            char c = Serial.read();
+            MESSAGE += c;
+          } 
+    Serial.print("Message reçu : ");
+    Serial.println(MESSAGE);
+        }
+        String messageConverted = azertyToQwerty(MESSAGE.c_str());
         Serial.println(messageConverted);
         typeText(messageConverted.c_str());
+        MESSAGE="";
+        
     }
 
     delay(100);
