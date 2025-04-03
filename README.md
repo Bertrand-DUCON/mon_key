@@ -1,8 +1,8 @@
 # Mon Key
 # BLE Keyboard 
 
-## Description
-This project turns an ESP32 into a Bluetooth keyboard. When you connect your computer to the ESP32 via Bluetooth, any key you press on your keyboard is sent to the ESP32, which then transmits it back over Bluetooth as if it were a real wireless keyboard.
+## **Description**
+This project turns an `ESP32` into a `Bluetooth keyboard`. When you connect your computer to the ESP32 via Bluetooth, any key you press on your keyboard is sent to the ESP32, which then transmits it back with a Bluetooth communication to reproduce a real `wireless keyboard`.
 
 To make it work, you need to:
 1. Pair your ESP32 with your computer via Bluetooth
@@ -11,10 +11,10 @@ To make it work, you need to:
 
 Once everything is set up, each key you type on your computer is forwarded to the ESP32 over serial, and the ESP32 then sends it as a Bluetooth HID input. This effectively makes your ESP32 act as a wireless keyboard.
 
-## Depedencies
+## **Depedencies**
 You need to use python3 and .ino code wich python will be a deamon script on your PC and .ino will be flashed in the ESP32. 
 
-### Venv
+### **Venv**
 If you are in `Arch` or other distrib that don't accept pip install directly you will need venv to run the following, otherwise you don't need to use it. The installation with Arch is :
 ``` 
 sudo pacman -S python-venv
@@ -32,7 +32,7 @@ source esp32/bin/activate
 ```
 Now your venv environment is setup.
 
-### Python Dependencies
+### **Python Dependencies**
 To install the required Python dependencies, if not go to `esp32/BLE_Keyboard/` file with 
 ```
 cd esp32/BLE_Keyboard/
@@ -43,7 +43,7 @@ And then simply run
 pip install -r requirements.txt
 ```
 
-### Arduino Libraries
+### **Arduino Libraries**
 For the ESP32 firmware, you need to install some Arduino libraries. There are two ways to do this, depending on your setup :
 
 **Using Arduino IDE**
@@ -60,7 +60,7 @@ For the ESP32 firmware, you need to install some Arduino libraries. There are tw
 pio lib install
 ```
 
-## Launch
+## **Launch**
 1. Flash the esp32 with `BLE_Keyboard.ino` with Arduino-IDE or PlatformIO
 2. When the ESP32 is flashed a Bluetooth access point will apear. Connect your computer to it
 3. Start the python deamon program with
