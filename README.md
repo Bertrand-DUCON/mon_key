@@ -2,7 +2,7 @@
 # BLE Keyboard 
 
 ## Description
-This project turns an ESP32 into a Bluetooth keyboard. The idea is simple: when you connect your computer to the ESP32 via Bluetooth, any key you press on your keyboard is sent to the ESP32, which then transmits it back over Bluetooth as if it were a real wireless keyboard.
+This project turns an ESP32 into a Bluetooth keyboard. When you connect your computer to the ESP32 via Bluetooth, any key you press on your keyboard is sent to the ESP32, which then transmits it back over Bluetooth as if it were a real wireless keyboard.
 
 To make it work, you need to:
 1. Pair your ESP32 with your computer via Bluetooth
